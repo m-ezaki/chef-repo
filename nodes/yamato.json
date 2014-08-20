@@ -1,6 +1,6 @@
 {
   "run_list": [
-    "recipe[test]"
+    "recipe[login_user]"
   ],
   "automatic": {
     "ipaddress": "yamato"
