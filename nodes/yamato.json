@@ -1,6 +1,8 @@
 {
   "run_list": [
-    "recipe[login_user]"
+    "recipe[login_user]",
+    "recipe[yum-ius]",
+    "recipe[yum_repo]"
   ],
   "automatic": {
     "ipaddress": "yamato"
