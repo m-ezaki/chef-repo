@@ -1,0 +1,8 @@
+{
+  "run_list": [
+    "role[web_type01]"
+  ],
+  "automatic": {
+    "ipaddress": "yamato"
+  }
+}

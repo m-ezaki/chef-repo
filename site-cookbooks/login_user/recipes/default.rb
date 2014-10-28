@@ -3,7 +3,7 @@ data = data_bag('users')
 data.each do |id|
 
  u = data_bag_item('users',id)
- 
+
  group u['group'] do
   gid u['gid']
   action [:create]
@@ -19,7 +19,7 @@ data.each do |id|
   action [:create, :manage]
  end
 
-end 
+end
 
 directory '/home/gn25-admin/.ssh' do
  owner 'gn25-admin'
@@ -27,7 +27,7 @@ directory '/home/gn25-admin/.ssh' do
  mode '0700'
  action :create
 end
- 
+
 template "/home/gn25-admin/.ssh/authorized_keys" do
  owner 'gn25-admin'
  group 'gn25-admin'

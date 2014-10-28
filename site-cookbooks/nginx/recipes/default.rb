@@ -20,7 +20,44 @@ end
 
 package "nginx" do
   action :install
-  version "1.6.1-1.el6.ngx"
+end
+
+directory "/var/www/html/HealthCheckMonitor/sysmgmt" do
+ owner "root"
+ group "root"
+ recursive true
+ mode 0644
+ action :create
+ not_if "ls -d /var/www/html/HealthCheckMonitor/sysmgmt"
+ #not_if { File.exists "/var/www/html" }
+end
+
+bash "add hostname" do
+  not_if "ls /var/www/html/HealthCheckMonitor/sysmgmt/index.html"
+
+  code <<-EOC
+    hostname >> /var/www/html/HealthCheckMonitor/sysmgmt/index.html
+  EOC
+end
+
+template "/etc/nginx/nginx.conf" do
+ mode 0644
+ source "nginx.conf.erb"
+end
+
+template "/etc/nginx/conf.d/default.conf" do
+ mode 0644
+ source "default.conf.erb"
+end
+
+template "/var/www/html/index.php" do
+ mode 0644
+ source "index.php.erb"
+end
+
+template "/var/www/html/test.php" do
+ mode 0644
+ source "test.php.erb"
 end
 
 service "nginx" do

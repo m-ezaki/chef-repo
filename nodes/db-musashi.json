@@ -1,0 +1,8 @@
+{
+  "run_list": [
+    "role[db_type01]"    
+  ],
+  "automatic": {
+    "ipaddress": "musashi"
+  }
+}
